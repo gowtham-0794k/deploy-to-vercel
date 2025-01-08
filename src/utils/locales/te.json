@@ -1,0 +1,73 @@
+{
+    "Dashboard": "డాష్‌బోర్డ్",
+    "Select Course": "కోర్సును ఎంచుకోండి",
+    "Select Paper": "పేపర్ ఎంచుకోండి",
+  
+    "Learning": "అధ్యయనం",
+    "Chapter Analysis": "చాప్టర్ విశ్లేషణ",
+    "Ask Questions": "ప్రశ్నలు అడగండి",
+    "Get Questions": "ప్రశ్నలను పొందండి",
+  
+    "Organisation": "సంస్థ",
+    "Create Organisation": "సంస్థను సృష్టించండి",
+    "Manage Branding": "బ్రాండింగ్‌ను నిర్వహించండి",
+    "Admin User": "అడ్మిన్ యూజర్",
+    "Manage Organisations": "సంస్థలను నిర్వహించండి",
+    "Commercials": "కామర్షియల్స్",
+    "Assign Courses": "కోర్సులను కేటాయించండి",
+    "Assign Sales Packages": "విక్రయ ప్యాకేజీలను కేటాయించండి",
+  
+    "Course Management": "కోర్సు నిర్వహణ",
+    "Create Department": "విభాగాన్ని సృష్టించండి",
+    "Create Discipline": "శాఖను సృష్టించండి",
+    "Create Division": "డివిజన్‌ను సృష్టించండి",
+    "Create Course": "కోర్సును సృష్టించండి",
+  
+    "Create Papers": "పేపర్‌లను సృష్టించండి",
+    "Create Parts": "భాగాలను సృష్టించండి",
+    "Create Chapters": "అధ్యాయాలను సృష్టించండి",
+    "Create Units": "యూనిట్లను సృష్టించండి",
+  
+    "Create Course Bundles": "కోర్సు బండిల్స్‌ను సృష్టించండి",
+    "Create Group": "గుంపును సృష్టించండి",
+    "Create Bundles": "బండిల్స్‌ను సృష్టించండి",
+    "Manage Bundles": "బండిల్స్‌ను నిర్వహించండి",
+  
+    "Sales Packages": "విక్రయ ప్యాకేజీలు",
+    "Create Sales Packages": "విక్రయ ప్యాకేజీలను సృష్టించండి",
+    "View Modify Sales Packages": "ప్యాకేజీలను చూడండి మరియు మార్చండి",
+    "Upgrade Suggestions": "నవీకరణ సూచనలు",
+  
+    "Organisation Package": "సంస్థ ప్యాకేజీ",
+    "Attach Packages": "ప్యాకేజీలను జోడించండి",
+    "Delete Attachment": "జోడింపును తొలగించండి",
+  
+    "Accounting": "లెక్కలు",
+    "Pricing Page Control": "ధర నియంత్రణ పేజీ",
+    "Wallet Details": "వాలెట్ వివరాలు",
+  
+    "Users": "వినియోగదారులు",
+    "User Profile": "వినియోగదారుడి వివరాలు",
+    "Invite Users": "వినియోగదారులను ఆహ్వానించండి",
+    "Invite Super Admin": "సూపర్ అడ్మిన్‌ను ఆహ్వానించండి",
+    "Roles and Permissions": "పాత్రలు మరియు అనుమతులు",
+  
+    "Orgization Content": "సంస్థ విషయాలు",
+    "Institute Exam Evaluation Creator": "ఇన్‌స్టిట్యూట్ ఎగ్జామ్ మూల్యాంకన సృష్టికర్త",
+    "Institute Exam Evaluation User": "ఇన్‌స్టిట్యూట్ ఎగ్జామ్ మూల్యాంకన వినియోగదారు",
+  
+    "Admin Pages": "అడ్మిన్ పేజీలు",
+    "Pricing Page": "ధరల పేజీ",
+    "Checkout Page": "చెకౌట్ పేజీ",
+  
+    "Manage Content": "విషయాన్ని నిర్వహించండి",
+    "Managr Ask Questions": "ప్రశ్నలను నిర్వహించండి",
+    "Manage Get Questions": "సమాధానాలను నిర్వహించండి",
+  
+    "Generate Content": "విషయాన్ని ఉత్పత్తి చేయండి",
+    "Podcast maker": "పాడ్‌కాస్ట్ మేకర్",
+    "Finetuning content maker": "విషయాన్ని మెరుగుపరచు",
+  
+    "Instructors": "బోధకులు"
+  }
+  

@@ -1,0 +1,101 @@
+import { FormattedMessage } from "react-intl";
+import { NavItemType } from "types";
+import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+
+const pages: NavItemType = {
+  id: "Learning",
+  title: <FormattedMessage id="Learning" />,
+  icon: SentimentSatisfiedIcon,
+  type: "group",
+  children: [
+    {
+      id: "Chapter-Analysis",
+      title: <FormattedMessage id="Chapter Analysis" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/chapter-analysis",
+      breadcrumbs: false,
+    },
+    {
+      id: "Ask-Questions",
+      title: <FormattedMessage id="Ask Questions" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/ask-question",
+      breadcrumbs: false,
+    },
+    {
+      id: "Get-Questions",
+      title: <FormattedMessage id="Get Questions" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/get-question",
+      breadcrumbs: false,
+    },
+    {
+      id: "Quizzes",
+      title: <FormattedMessage id="Quizzes" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/quiz",
+      breadcrumbs: true,
+    },
+    {
+      id: "Interactive-Learning",
+      title: <FormattedMessage id="Interactive Learning" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/interactive-learning",
+      breadcrumbs: true,
+    },
+    {
+      id: "Revision-Notes",
+      title: <FormattedMessage id="Revision Notes" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/revision-notes",
+      breadcrumbs: true,
+    },
+    {
+      id: "Q and A",
+      title: <FormattedMessage id="Q and A" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/question and answer",
+      breadcrumbs: true,
+    },
+    {
+      id: "Case Study with MCQs",
+      title: <FormattedMessage id="Case Study with MCQs" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/revision-notes",
+      breadcrumbs: true,
+    },
+    {
+      id: "PY Question Papers",
+      title: <FormattedMessage id="PY Question Papers" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/py-question-papers",
+      breadcrumbs: true,
+    },
+    {
+      id: "Mock Exams",
+      title: <FormattedMessage id="Mock Exams" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/mock-exams",
+      breadcrumbs: true,
+    },
+    {
+      id: "Podcasts",
+      title: <FormattedMessage id="Podcasts" />,
+      type: "item",
+      icon: SentimentSatisfiedIcon,
+      url: "/learning/Podcasts",
+      breadcrumbs: true,
+    },
+  ],
+};
+export default pages;

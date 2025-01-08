@@ -1,0 +1,40 @@
+// types
+import { UserProfile } from 'types/user-profile';
+
+// ==============================|| TYPES - CHAT ||============================== //
+
+export type History = {
+  id?:number;
+  from?: string;
+  to?: string;
+  time?: string;
+  text?: string;
+};
+
+export interface ChatHistory {
+  id?: number;
+  from?: string;
+  to?: string;
+  text?: string;
+  time?: string;
+  user?:string;
+}
+
+export interface ChatStateProps {
+  chats: ChatHistory[];
+  user: UserProfile;
+  users: UserProfile[];
+  error: object | string | null;
+}
+// interface NewMessage {
+//   id: number
+//   from: string
+//   to: string
+//   text: string
+//   time: string
+//   user: UserProfile
+// }
+
+
+
+

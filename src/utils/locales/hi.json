@@ -1,0 +1,75 @@
+{
+    "Dashboard": "डैशबोर्ड",
+    "Select Course": "पाठ्यक्रम चुनें",
+    "Select Paper": "पेपर चुनें",
+  
+    "Learning": "अध्ययन",
+    "Chapter Analysis": "अध्याय विश्लेषण",
+    "Ask Questions": "प्रश्न पूछें",
+    "Get Questions": "प्रश्न प्राप्त करें",
+  
+    "Organisation": "संगठन",
+    "Create Organisation": "संगठन बनाएं",
+    "Manage Branding": "ब्रांडिंग प्रबंधित करें",
+    "Admin User": "प्रशासनिक उपयोगकर्ता",
+    "Manage Organisations": "संगठन प्रबंधित करें",
+    "Commercials": "वाणिज्यिक",
+    "Assign Courses": "पाठ्यक्रम आवंटित करें",
+    "Assign Sales Packages": "बिक्री पैकेज आवंटित करें",
+  
+    "Course Management": "पाठ्यक्रम प्रबंधन",
+    "Create Department": "विभाग बनाएं",
+    "Create Discipline": "शाखा बनाएं",
+    "Create Division": "विभाजन बनाएं",
+    "Create Course": "पाठ्यक्रम बनाएं",
+  
+    "Create Papers": "पेपर बनाएं",
+    "Create Parts": "भाग बनाएं",
+    "Create Chapters": "अध्याय बनाएं",
+    "Create Units": "यूनिट्स बनाएं",
+  
+    "Create Course Bundles": "पाठ्यक्रम बंडल बनाएं",
+    "Create Group": "समूह बनाएं",
+    "Create Bundles": "बंडल बनाएं",
+    "Manage Bundles": "बंडल प्रबंधित करें",
+  
+    "Sales Packages": "बिक्री पैकेज",
+    "Create Sales Packages": "बिक्री पैकेज बनाएं",
+    "View Modify Sales Packages": "पैकेज देखें और संशोधित करें",
+    "Upgrade Suggestions": "अपग्रेड सुझाव",
+  
+    "Organisation Package": "संगठन पैकेज",
+    "Attach Packages": "पैकेज संलग्न करें",
+    "Delete Attachment": "संलग्नक हटाएं",
+  
+    "Accounting": "लेखांकन",
+    "Pricing Page Control": "मूल्य निर्धारण पृष्ठ नियंत्रण",
+    "Wallet Details": "वॉलेट विवरण",
+  
+    "Users": "उपयोगकर्ता",
+    "User Profile": "उपयोगकर्ता प्रोफ़ाइल",
+    "Invite Users": "उपयोगकर्ताओं को आमंत्रित करें",
+    "Invite Super Admin": "सुपर एडमिन को आमंत्रित करें",
+    "Roles and Permissions": "भूमिकाएं और अनुमतियां",
+  
+    "Orgization Content": "संगठन सामग्री",
+    "Institute Exam Evaluation Creator": "संस्थान परीक्षा मूल्यांकन निर्माता",
+    "Institute Exam Evaluation User": "संस्थान परीक्षा मूल्यांकन उपयोगकर्ता",
+  
+    "Admin Pages": "प्रशासनिक पृष्ठ",
+    "Pricing Page": "मूल्य निर्धारण पृष्ठ",
+    "Checkout Page": "चेकआउट पृष्ठ",
+  
+    "Manage Content": "सामग्री प्रबंधित करें",
+    "Managr Ask Questions": "प्रश्न प्रबंधित करें",
+    "Manage Get Questions": "उत्तर प्रबंधित करें",
+  
+    "Generate Content": "सामग्री उत्पन्न करें",
+    "Podcast maker": "पॉडकास्ट निर्माता",
+    "Finetuning content maker": "सामग्री को परिष्कृत करें",
+  
+    "Instructors": "प्रशिक्षक",
+    "Interactive Learning": "इंटरैक्टिव लर्निंग",
+    "Quizzes": "क्विज़"
+  }
+  

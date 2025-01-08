@@ -1,0 +1,93 @@
+{
+    "Dashboard":"ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    "Select Course": "ಕೋರ್ಸ್ ಆಯ್ಕೆಮಾಡಿ",
+    "Select Paper": "ಪೇಪರ್ ಆಯ್ಕೆಮಾಡಿ",
+
+
+    "Learning": "ಅಧ್ಯಯನ",
+    "Chapter Analysis": "ಅಧ್ಯಾಯ ವಿಶ್ಲೇಷಣೆ",
+    "Ask Questions": "ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ",
+    "Get Questions": "ಪ್ರಶ್ನೆಗಳನ್ನು ಪಡೆಯಿರಿ",
+    "Quizzes": "ಕ್ವಿಜ್ಜ್",
+    "Podcast": "ಪೋಡ್‌ಕಾಸ್ಟ್",
+   "Interactive Learning": "ಸಂಪಾದಿಕ ಅಧ್ಯಯನ",
+   "Revision Notes": "ನೋಡಿಸಿ ನೋಡಿಕೆ",
+   "Q and A":"ಪ್ರಶ್ನೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+   "Case Study with MCQs":"MCQ ಗಳೊಂದಿಗೆ ಕೇಸ್ ಸ್ಟಡಿ",
+  "PY Question Papers":"PY ಪೇಪರ್",
+  "Mock Exams":"ಮೂಕ್ ಪ್ರಶ್ನೆಗಳು",
+  "Podcasts":"ಪೋಡ್‌ಕಾಸ್ಟ್",
+
+
+    "Organisation": "ಸಂಸ್ಥೆ",
+    "Create Organisation": "ಸಂಸ್ಥೆಯನ್ನು ರಚಿಸಿ",
+    "Manage Branding": "ಬ್ರಾಂಡ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+    "Admin User": "ನಿರ್ವಾಹಕ ಬಳಕೆದಾರ",
+    "Manage Organisations": "ಸಂಸ್ಥೆಯನ್ನು ನಿರ್ವಹಿಸಿ",
+    "Commercials": "ವ್ಯವಹಾರಿಕತೆ",
+    "Assign Courses": "ಕೋರ್ಸ್ ಹಂಚಿಕೆ ಮಾಡಿ",
+    "Assign Sales Packages": "ಮಾರಾಟ ಹಂಚಿಕೆ ಮಾಡಿ",
+    "Add Branding": "ಬ್ರಾಂಡ್‌ಗಳನ್ನು ಲಿಂಕೆದಾರಿಸಿ",
+
+    "Course Management": "ಕೋರ್ಸ್ ನಿರ್ವಹಣೆ",
+    "Create Department": "ವಿಭಾಗ ರಚಿಸಿ",
+    "Create Discipline": "ಶಾಖೆಯನ್ನು ರಚಿಸಿ",
+    "Create Division": "ವಿಭಾಗವನ್ನು ರಚಿಸಿ",
+    "Create Course": "ಕೋರ್ಸ್ ಅನ್ನು ರಚಿಸಿ",
+
+    "Create Papers": "ಪೇಪರ್‌ಗಳನ್ನು ರಚಿಸಿ",
+    "Create Parts": "ಭಾಗಗಳನ್ನು ರಚಿಸಿ",
+   "Create Chapters": "ಅಧ್ಯಾಯಗಳನ್ನು ರಚಿಸಿ",
+   "Create Units": "ಘಟಕಗಳನ್ನು ರಚಿಸಿ",
+
+   "Create Course Bundles": "ಕೋರ್ಸ್ ಬಂಡ್ಲ್ ರಚಿಸಿ",
+   "Create Group": "ಗುಂಪು ರಚಿಸಿ",
+   "Create Bundles": "ಗುಂಪುಗಳನ್ನು ರಚಿಸಿ",
+   "Manage Bundles": "ಗುಂಪುಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+
+   "Sales Packages":"ಮಾರಾಟ ಪ್ಯಾಕೇಜುಗಳು",
+   "Create Sales Packages": "ಮಾರಾಟ ಪ್ಯಾಕೇಜ್ ರಚಿಸಿ",
+      "View Modify Sales Packages": "ಪ್ಯಾಕೇಜುಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ತಿದ್ದು",
+      "Upgrade Suggestions": "ನವೀಕರಿಸಲು ಸಲಹೆಗಳು",
+
+       "Organisation Package":"ಸಂಸ್ಥೆ ಪ್ಯಾಕೇಜ್",
+       "Attach Packages": "ಪ್ಯಾಕೇಜ್ ಜೋಡಿಸಿ",
+       "Delete Attachment": "ಜೋಡಿಸಿದ ಪ್ಯಾಕೇಜ್ ಅಳಿಸಿ",
+
+       "Accounting":"ಹಿಸಾಬು ಪುಸ್ತಕ",
+         "Pricing Page Control": "ಬೆಲೆ ಪೇಜ್",
+      "Wallet Details": "ವಾಲೆಟ್ ವಿವರಗಳು",
+
+     "Users":"ಬಳಕೆದಾರರು",
+     "User Profile": "ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್",
+     "Invite Users": "ಬಳಕೆದಾರರನ್ನು ಆಹ್ವಾನಿಸಿ",
+     "Invite Super Admin": "ಸುಪರ್ ಆಡ್ಮಿನ್ ಅನ್ನು ಆಹ್ವಾನಿಸಿ",
+     "Roles and Permissions": "ಪಾತ್ರಗಳು ಮತ್ತು ಅನುಮತಿಗಳು",
+
+
+     "Orgization Content":"ಸಂಸ್ಥೆಯ ವಿಷಯ",
+      "Institute Exam Evaluation Creator": "ಸಂಸ್ಥೆಯ ಪರೀಕ್ಷಾ ಮೌಲ್ಯಮಾಪನ ಸೃಜಕ",
+     "Institute Exam Evaluation User": "ಸಂಸ್ಥೆಯ ಪರೀಕ್ಷೆ ಮೌಲ್ಯಮಾಪನ ಬಳಕೆದಾರ",
+
+     "Admin Pages":"ನಿರ್ವಾಹಕ ಪುಟಗಳು",
+     "Pricing Page":"ಬೆಲೆ ಪುಟ",
+     "Checkout Page":"ಚೆಕ್ಅವ್ ಪುಟ",
+    
+     "Manage Content":"ವಿಷಯವನ್ನು ನಿರ್ವಹಿಸಿ",
+        "Managr Ask Questions": "ಪ್ರಶ್ನೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+      "Manage Get Questions": "ಪ್ರತ್ಯುತ್ತರಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+
+      "Generate Content":"ವಿಷಯವನ್ನು ಉತ್ಪಾದಿಸಿ",
+    "Podcast maker": "ಪೋಡ್‌ಕಾಸ್ಟ್ ತಯಾರಕ",
+      "Finetuning content maker": "ವಿಷಯವನ್ನು ಸಮರಚಿಸಿ",
+
+      "Instructors":"ಪ್ರಶಿಕ್ಷಕರಿಗೆ ",
+      "Manage Rise Files": "ರಾಯ್ ಫೈಲ್ಸ್ ನಿರ್ವಹಿಸಿ",
+      "Manage Ask Questions": "ಪ್ರಶ್ನೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"
+
+      
+
+
+      
+
+}
