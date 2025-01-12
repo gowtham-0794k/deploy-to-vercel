@@ -93,6 +93,7 @@ const MenuList = () => {
 
   const menuItems: any = menuItem;
 
+  console.log("rolesAndPermissions !");
   console.log({ rolesAndPermissions });
 
   useEffect(() => {

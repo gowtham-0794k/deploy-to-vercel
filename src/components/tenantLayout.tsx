@@ -65,6 +65,8 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
           if (!userRolesResponse) {
             throw new Error("Couldn't fetch roles and permissions!");
           }
+          console.log("userRolesResponse !");
+          console.log({ userRolesResponse });
           const rolesResponse = userRolesResponse?.data?.role;
           rolesAndPermissionsChange(rolesResponse);
         } catch (roleError) {
@@ -73,7 +75,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
       };
       fetchUserRoles();
     }
-  }, [session?.user?.id]);
+  }, [session]);
 
   return (
     <TenantContext.Provider value={{ tenant, loading, error }}>
