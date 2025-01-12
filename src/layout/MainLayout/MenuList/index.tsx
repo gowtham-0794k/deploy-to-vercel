@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -20,6 +20,8 @@ import { useGetMenuMaster } from "shared/services/menu";
 // types
 import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
+import { useTenant } from "@components/tenantLayout";
+import { useSession } from "next-auth/react";
 
 function normalizeName(name: string): string {
   return name?.toLowerCase().replace(/ /g, "_");
@@ -32,8 +34,6 @@ function normalizeNameMenu(name: string): string {
 function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
   const featureSet = new Set<string>();
   const subFeatureSet = new Set<string>();
-  console.log({ roles });
-  console.log("filter menu items !");
   // Separate feature and sub-feature normalization
   roles?.forEach((feature) => {
     if (feature.enabled) {
@@ -45,7 +45,6 @@ function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
       });
     }
   });
-  console.log({ featureSet });
   function filterMenu(item: any) {
     const idToMatch = normalizeNameMenu(item?.featureName);
     if (featureSet.has(idToMatch)) {
@@ -81,33 +80,37 @@ function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
 
 const MenuList = () => {
   const theme = useTheme(),
-    { rolesAndPermissions } = useConfig(),
+    { rolesResponse } = useTenant(),
     downMD = useMediaQuery(theme.breakpoints.down("md")),
     { menuOrientation } = useConfig(),
     { menuMaster } = useGetMenuMaster(),
     drawerOpen = menuMaster.isDashboardDrawerOpened,
     isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD,
     [selectedID, setSelectedID] = useState<string | undefined>(""),
-    lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null;
+    lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null,
+    [roles, setRoles] = useState<any>([]);
+  const { data: session } = useSession();
 
   const menuItems: any = menuItem;
 
-  console.log({ rolesAndPermissions });
-  const result = filterMenuItemsByRoles(
-    rolesAndPermissions?.permissions?.features,
-    menuItems?.items
-  );
+  useEffect(() => {
+    if (rolesResponse?.permissions?.features) {
+      const mapData = filterMenuItemsByRoles(
+        rolesResponse?.permissions?.features,
+        menuItems?.items
+      );
+      setRoles(mapData);
+    }
+  }, [session, rolesResponse]);
 
-  console.log({ result });
-
-  let lastItemIndex = result.length - 1,
+  let lastItemIndex = roles.length - 1,
     remItems: NavItemType[] = [],
     lastItemId: string;
 
-  if (lastItem && lastItem < result.length) {
-    lastItemId = result[lastItem - 1].id!;
+  if (lastItem && lastItem < roles.length) {
+    lastItemId = roles[lastItem - 1].id!;
     lastItemIndex = lastItem - 1;
-    remItems = result.slice(lastItem - 1, result.length).map((item: any) => ({
+    remItems = roles.slice(lastItem - 1, roles.length).map((item: any) => ({
       title: item.title,
       elements: item.children,
       icon: item.icon,
@@ -117,7 +120,7 @@ const MenuList = () => {
     }));
   }
 
-  const navItems = result
+  const navItems = roles
     .slice(0, lastItemIndex + 1)
     .map((item: any, index: number) => {
       switch (item.type) {
