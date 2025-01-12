@@ -20,6 +20,7 @@ import { useGetMenuMaster } from "shared/services/menu";
 // types
 import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
+import { useTenant } from "@components/tenantLayout";
 
 function normalizeName(name: string): string {
   return name?.toLowerCase().replace(/ /g, "_");
@@ -82,6 +83,7 @@ function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
 const MenuList = () => {
   const theme = useTheme(),
     { rolesAndPermissions } = useConfig(),
+    { rolesResponse } = useTenant(),
     downMD = useMediaQuery(theme.breakpoints.down("md")),
     { menuOrientation } = useConfig(),
     { menuMaster } = useGetMenuMaster(),
@@ -95,6 +97,7 @@ const MenuList = () => {
 
   console.log("rolesAndPermissions !");
   console.log({ rolesAndPermissions });
+  console.log({ rolesResponse });
 
   useEffect(() => {
     if (rolesAndPermissions?.permissions?.features) {
@@ -104,7 +107,7 @@ const MenuList = () => {
       );
       setRoles(mapData);
     }
-  }, [rolesAndPermissions]);
+  }, [rolesAndPermissions, rolesResponse]);
 
   console.log({ roles });
 

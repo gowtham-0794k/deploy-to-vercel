@@ -11,6 +11,7 @@ interface TenantContextType {
   tenant: any | null;
   loading: boolean;
   error: Error | null;
+  rolesResponse: any;
 }
 
 // Create Context
@@ -18,6 +19,7 @@ const TenantContext = createContext<TenantContextType>({
   tenant: null,
   loading: true,
   error: null,
+  rolesResponse: [],
 });
 
 // Tenant Provider Component
@@ -27,6 +29,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
   const [tenant, setTenant] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const [rolesResponse, setRolesResponse] = useState<any>([]);
   const { data: session } = useSession(),
     { rolesAndPermissionsChange, rolesAndPermissions } = useConfig();
   useEffect(() => {
@@ -71,6 +74,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
           console.log({ userRolesResponse });
           const rolesResponse = userRolesResponse?.data?.role;
           rolesAndPermissionsChange(rolesResponse);
+          setRolesResponse(rolesResponse);
           console.log({ rolesAndPermissions });
         } catch (roleError) {
           console.error("Auth Role error:", roleError);
@@ -81,7 +85,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [session]);
 
   return (
-    <TenantContext.Provider value={{ tenant, loading, error }}>
+    <TenantContext.Provider value={{ tenant, loading, error, rolesResponse }}>
       {children}
     </TenantContext.Provider>
   );
