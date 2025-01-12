@@ -94,57 +94,56 @@ const MenuList = () => {
     isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD,
     [selectedID, setSelectedID] = useState<string | undefined>(""),
     lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null,
-    [roles, setRoles] = useState<any>([]),
-    [rolesResponseData, setRolesResponseData] = useState<any>([]);
+    [roles, setRoles] = useState<any>([]);
   const { data: session } = useSession();
 
   const menuItems: any = menuItem;
 
-  console.log("rolesAndPermissions !");
+  console.log("menu rolesAndPermissions !");
   console.log({ rolesAndPermissions });
   console.log({ rolesResponse });
 
   useEffect(() => {
-    if (rolesResponseData?.permissions?.features) {
+    if (rolesResponse?.permissions?.features) {
       const mapData = filterMenuItemsByRoles(
-        rolesResponseData?.permissions?.features,
+        rolesResponse?.permissions?.features,
         menuItems?.items
       );
       setRoles(mapData);
     }
-  }, [rolesAndPermissions, rolesResponse, rolesResponse]);
+  }, [session, rolesResponse]);
 
   console.log({ roles });
 
-  useEffect(() => {
-    console.log({ session });
-    console.log("tenant layout !");
-    if (session?.user?.id) {
-      const fetchUserRoles = async () => {
-        try {
-          const userRolesPayload = {
-            id: session?.user?.id,
-          };
-          const userRolesResponse = await postAxios({
-            url: USER_ROLES,
-            values: userRolesPayload,
-          });
-          if (!userRolesResponse) {
-            throw new Error("Couldn't fetch roles and permissions!");
-          }
-          console.log("userRolesResponse !");
-          console.log({ userRolesResponse });
-          const rolesResponse = userRolesResponse?.data?.role;
-          // rolesAndPermissionsChange(rolesResponse);
-          setRolesResponseData(rolesResponse);
-          console.log({ rolesAndPermissions });
-        } catch (roleError) {
-          console.error("Auth Role error:", roleError);
-        }
-      };
-      fetchUserRoles();
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   console.log({ session });
+  //   console.log("tenant layout !");
+  //   if (session?.user?.id) {
+  //     const fetchUserRoles = async () => {
+  //       try {
+  //         const userRolesPayload = {
+  //           id: session?.user?.id,
+  //         };
+  //         const userRolesResponse = await postAxios({
+  //           url: USER_ROLES,
+  //           values: userRolesPayload,
+  //         });
+  //         if (!userRolesResponse) {
+  //           throw new Error("Couldn't fetch roles and permissions!");
+  //         }
+  //         console.log("userRolesResponse !");
+  //         console.log({ userRolesResponse });
+  //         const rolesResponse = userRolesResponse?.data?.role;
+  //         // rolesAndPermissionsChange(rolesResponse);
+  //         setRolesResponseData(rolesResponse);
+  //         console.log({ rolesAndPermissions });
+  //       } catch (roleError) {
+  //         console.error("Auth Role error:", roleError);
+  //       }
+  //     };
+  //     fetchUserRoles();
+  //   }
+  // }, [session]);
 
   let lastItemIndex = roles.length - 1,
     remItems: NavItemType[] = [],
