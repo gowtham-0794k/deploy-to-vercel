@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -88,26 +88,31 @@ const MenuList = () => {
     drawerOpen = menuMaster.isDashboardDrawerOpened,
     isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD,
     [selectedID, setSelectedID] = useState<string | undefined>(""),
-    lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null;
+    lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null,
+    [roles, setRoles] = useState<any>([]);
 
   const menuItems: any = menuItem;
 
-  console.log({ rolesAndPermissions });
-  const result = filterMenuItemsByRoles(
-    rolesAndPermissions?.permissions?.features,
-    menuItems?.items
-  );
+  useEffect(() => {
+    if (rolesAndPermissions?.permissions?.features) {
+      const mapData = filterMenuItemsByRoles(
+        rolesAndPermissions?.permissions?.features,
+        menuItems?.items
+      );
+      setRoles(mapData);
+    }
+  }, [rolesAndPermissions]);
 
-  console.log({ result });
+  console.log({ roles });
 
-  let lastItemIndex = result.length - 1,
+  let lastItemIndex = roles.length - 1,
     remItems: NavItemType[] = [],
     lastItemId: string;
 
-  if (lastItem && lastItem < result.length) {
-    lastItemId = result[lastItem - 1].id!;
+  if (lastItem && lastItem < roles.length) {
+    lastItemId = roles[lastItem - 1].id!;
     lastItemIndex = lastItem - 1;
-    remItems = result.slice(lastItem - 1, result.length).map((item: any) => ({
+    remItems = roles.slice(lastItem - 1, roles.length).map((item: any) => ({
       title: item.title,
       elements: item.children,
       icon: item.icon,
@@ -117,7 +122,7 @@ const MenuList = () => {
     }));
   }
 
-  const navItems = result
+  const navItems = roles
     .slice(0, lastItemIndex + 1)
     .map((item: any, index: number) => {
       switch (item.type) {
