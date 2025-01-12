@@ -93,6 +93,8 @@ const MenuList = () => {
 
   const menuItems: any = menuItem;
 
+  console.log({ rolesAndPermissions });
+
   useEffect(() => {
     if (rolesAndPermissions?.permissions?.features) {
       const mapData = filterMenuItemsByRoles(
