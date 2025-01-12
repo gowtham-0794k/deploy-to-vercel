@@ -21,6 +21,9 @@ import { useGetMenuMaster } from "shared/services/menu";
 import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
 import { useTenant } from "@components/tenantLayout";
+import { useSession } from "next-auth/react";
+import { postAxios } from "shared";
+import { USER_ROLES } from "shared/constants/routerUrls";
 
 function normalizeName(name: string): string {
   return name?.toLowerCase().replace(/ /g, "_");
@@ -91,7 +94,9 @@ const MenuList = () => {
     isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD,
     [selectedID, setSelectedID] = useState<string | undefined>(""),
     lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null,
-    [roles, setRoles] = useState<any>([]);
+    [roles, setRoles] = useState<any>([]),
+    [rolesResponseData, setRolesResponseData] = useState<any>([]);
+  const { data: session } = useSession();
 
   const menuItems: any = menuItem;
 
@@ -100,16 +105,46 @@ const MenuList = () => {
   console.log({ rolesResponse });
 
   useEffect(() => {
-    if (rolesAndPermissions?.permissions?.features) {
+    if (rolesResponseData?.permissions?.features) {
       const mapData = filterMenuItemsByRoles(
-        rolesAndPermissions?.permissions?.features,
+        rolesResponseData?.permissions?.features,
         menuItems?.items
       );
       setRoles(mapData);
     }
-  }, [rolesAndPermissions, rolesResponse]);
+  }, [rolesAndPermissions, rolesResponse, rolesResponse]);
 
   console.log({ roles });
+
+  useEffect(() => {
+    console.log({ session });
+    console.log("tenant layout !");
+    if (session?.user?.id) {
+      const fetchUserRoles = async () => {
+        try {
+          const userRolesPayload = {
+            id: session?.user?.id,
+          };
+          const userRolesResponse = await postAxios({
+            url: USER_ROLES,
+            values: userRolesPayload,
+          });
+          if (!userRolesResponse) {
+            throw new Error("Couldn't fetch roles and permissions!");
+          }
+          console.log("userRolesResponse !");
+          console.log({ userRolesResponse });
+          const rolesResponse = userRolesResponse?.data?.role;
+          // rolesAndPermissionsChange(rolesResponse);
+          setRolesResponseData(rolesResponse);
+          console.log({ rolesAndPermissions });
+        } catch (roleError) {
+          console.error("Auth Role error:", roleError);
+        }
+      };
+      fetchUserRoles();
+    }
+  }, [session]);
 
   let lastItemIndex = roles.length - 1,
     remItems: NavItemType[] = [],
