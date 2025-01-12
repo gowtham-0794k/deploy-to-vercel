@@ -15,11 +15,11 @@ import useAuth from "hooks/useAuth";
 import AuthWrapper1 from "components/authentication/AuthWrapper1";
 import AuthCardWrapper from "components/authentication/AuthCardWrapper";
 import Logo from "ui-component/Logo";
-import AuthLogin from "components/authentication/admin-auth-forms/AuthLogin";
+import AuthLogin from "components/authentication/auth-forms/AuthLogin";
 
 // ================================|| AUTH3 - LOGIN ||================================ //
 
-const Login = () => {
+const AdminLogin = () => {
   const { isLoggedIn } = useAuth();
   const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
@@ -122,4 +122,4 @@ const Login = () => {
     </AuthWrapper1>
   );
 };
-export default Login;
+export default AdminLogin;

@@ -24,7 +24,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Logo from '../Logo';
 
 // assets
-import { IconBook, IconCreditCard, IconDashboard, IconHome2 } from '@tabler/icons-react';
+import { IconBook, IconCreditCard } from '@tabler/icons-react';
 import MenuIcon from '@mui/icons-material/Menu';
 
 // types
@@ -77,14 +77,14 @@ const AppBar = ({ ...others }) => {
               <Button color="inherit" component={Link} href="#">
                 Home
               </Button>
-              <Button color="inherit" component={Link} href="login" target="_blank">
+              {/* <Button color="inherit" component={Link} href="login" target="_blank">
                 Dashboard
-              </Button>
-              <Button color="inherit" component={Link} href="https://codedthemes.gitbook.io/berry" target="_blank">
+              </Button> */}
+              {/* <Button color="inherit" component={Link} href="https://codedthemes.gitbook.io/berry" target="_blank">
                 Documentation
-              </Button>
-              <Button component={Link} href="https://links.codedthemes.com/hsqll" disableElevation variant="contained" color="secondary">
-                Purchase Now
+              </Button> */}
+              <Button  href="/login" target="_blank" disableElevation variant="contained" color="secondary">
+                Login
               </Button>
             </Stack>
             <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
@@ -95,22 +95,22 @@ const AppBar = ({ ...others }) => {
                 {drawerToggle && (
                   <Box sx={{ width: 'auto' }} role="presentation" onClick={drawerToggler(false)} onKeyDown={drawerToggler(false)}>
                     <List>
-                      <Link sx={{ textDecoration: 'none' }} href="#" target="_blank">
+                      {/* <Link sx={{ textDecoration: 'none' }} href="#" target="_blank">
                         <ListItemButton component="a">
                           <ListItemIcon>
                             <IconHome2 />
                           </ListItemIcon>
                           <ListItemText primary="Home" />
                         </ListItemButton>
-                      </Link>
-                      <Link sx={{ textDecoration: 'none' }} href="/login" target="_blank">
+                      </Link> */}
+                      {/* <Link sx={{ textDecoration: 'none' }} href="/login" target="_blank">
                         <ListItemButton component="a">
                           <ListItemIcon>
                             <IconDashboard />
                           </ListItemIcon>
                           <ListItemText primary="Dashboard" />
                         </ListItemButton>
-                      </Link>
+                      </Link> */}
                       <Link sx={{ textDecoration: 'none' }} href="https://codedthemes.gitbook.io/berry" target="_blank">
                         <ListItemButton component="a">
                           <ListItemIcon>

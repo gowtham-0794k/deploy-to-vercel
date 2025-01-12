@@ -5,10 +5,11 @@ import jwt from "jsonwebtoken";
 import User from "../../../../../lib/models/User";
 import { sendEmail } from "../../../../../shared/services/email";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-
 export async function POST(req: Request) {
   const { email } = await req.json();
+  const url = new URL(req.url);
+
+  const hostUrl = url.origin;
   // Validate the email
   if (!email) {
     return NextResponse.json({ error: "Email is required." }, { status: 400 });
@@ -30,7 +31,8 @@ export async function POST(req: Request) {
     { expiresIn: "1h" }
   );
   // Create the reset password link
-  const resetLink = `${BASE_URL}/reset-password?token=${token}`;
+  if (!hostUrl) return;
+  const resetLink = `${hostUrl}/reset-password?token=${token}`;
   // Send the reset link via email
   await sendEmail(
     user.email,
@@ -41,3 +43,4 @@ export async function POST(req: Request) {
     message: "Reset password link has been sent to your email.",
   });
 }
+

@@ -52,7 +52,6 @@ const Security = () => {
         `${BASE_URL}/changePassword/${session?.user?.id}`,
         payload
       );
-      console.log({ response });
 
       if (response.statusText === "OK") {
         dispatch(

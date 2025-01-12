@@ -14,6 +14,7 @@ const validationSchema = yup.object({
   state: yup.string().required("State is required !"),
   typeOfOrganization: yup.string().required("Type of Organization is required !"),
   pincode: yup.string().required("Pincode is required !"),
+  brandName: yup.string().required("Brand Name is required !"),
 });
 
 export type OrganizationType = {
@@ -111,7 +112,7 @@ const OrganizationForm = ({
             <TextField
               id="addressLine1"
               name="addressLine1"
-              label="Address line 1"
+              label="Address line 1 *"
               value={formik.values.addressLine1}
               onChange={formik.handleChange}
               error={
@@ -137,7 +138,7 @@ const OrganizationForm = ({
             <TextField
               id="city"
               name="city"
-              label="City"
+              label="City *"
               value={formik.values.city}
               onChange={formik.handleChange}
               error={formik.touched.city && Boolean(formik.errors.city)}
@@ -154,7 +155,7 @@ const OrganizationForm = ({
               onChange={formik.handleChange}
               error={formik.touched.state && Boolean(formik.errors.state)}
               helperText={formik.touched.state && formik.errors.state}
-              label="State/Province/Region"
+              label="State/Province/Region *"
               fullWidth
             />
           </Grid>
@@ -162,7 +163,7 @@ const OrganizationForm = ({
             <TextField
               id="pincode"
               name="pincode"
-              label="Zip / Postal code"
+              label="Zip / Postal code *"
               value={formik.values.pincode}
               onChange={formik.handleChange}
               error={formik.touched.pincode && Boolean(formik.errors.pincode)}
@@ -175,7 +176,7 @@ const OrganizationForm = ({
             <TextField
               id="typeOfOrganization"
               name="typeOfOrganization"
-              label="Type of Organisation"
+              label="Type of Organisation *"
               value={formik.values.typeOfOrganization}
               onChange={formik.handleChange}
               error={

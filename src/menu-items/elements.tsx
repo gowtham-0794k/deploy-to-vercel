@@ -13,9 +13,11 @@ const elements: NavItemType = {
   title: <FormattedMessage id="Dashboard" />,
   icon: icons.IconBrush,
   type: "group",
+  featureName: "Dashboard",
   children: [
     {
       id: "Select-Course",
+      subFeatureName: "Select Course",
       title: <FormattedMessage id="Select Course" />,
       type: "collapse",
       icon: icons.IconBrush,
@@ -38,6 +40,7 @@ const elements: NavItemType = {
     },
     {
       id: "Select Paper",
+      subFeatureName: "Select Paper",
       title: <FormattedMessage id="Select Paper" />,
       type: "collapse",
       icon: icons.IconTools,

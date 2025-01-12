@@ -42,13 +42,12 @@ const AuthForgotPassword = ({
         setSubmitting(false);
         dispatch(openSnackbarFunction(CHECK_MAIL_FOR_RESET_PASSWORD_LINK, "success"));
       } else if (forgotPassword.rejected.match(response)) {
-        throw new Error((response.payload as string) || USER_NOT_FOUND);
+        throw new Error(USER_NOT_FOUND);
       }
     } catch (err: any) {
-      console.error(err);
       if (scriptedRef.current) {
         setStatus({ success: false });
-        setErrors({ submit: err.message || AN_ERROR_OCCURRED });
+        setErrors({ submit: AN_ERROR_OCCURRED });
         setSubmitting(false);
       }
     }

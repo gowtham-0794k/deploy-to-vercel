@@ -27,7 +27,7 @@ const ProfileSection = () => {
   const { data: session } = useSession(),
     theme = useTheme(),
     userData: any = session?.user,
-    { roleName, first_name, last_name } = userData?._doc,
+    { roleName, first_name, last_name, email } = userData?._doc,
     { borderRadius } = useConfig(),
     [open, setOpen] = useState(false),
     anchorRef = useRef<any>(null),
@@ -150,7 +150,9 @@ const ProfileSection = () => {
                             variant="h4"
                             sx={{ fontWeight: 400 }}
                           >
-                            {first_name + " " + last_name}
+                            {first_name || last_name
+                              ? first_name + " " + last_name
+                              : email}
                           </Typography>
                         </Stack>
                         <Typography variant="subtitle2">{roleName}</Typography>

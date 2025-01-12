@@ -90,7 +90,9 @@ const Contacts = ({
 
   const renderContactPersonFields = (
     personKey: "contactPerson1" | "contactPerson2"
-  ) => (
+  ) => {
+    const isContactPerson1 = personKey === "contactPerson1";
+    return(
     <>
       <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
         {personKey === "contactPerson1"
@@ -103,7 +105,7 @@ const Contacts = ({
             fullWidth
             id={`${personKey}.firstName`}
             name={`${personKey}.firstName`}
-            label="First Name"
+            label={`First Name${isContactPerson1 ? " *" : ""}`}
             value={formik.values[personKey].firstName}
             onChange={formik.handleChange}
             error={
@@ -121,7 +123,7 @@ const Contacts = ({
             fullWidth
             id={`${personKey}.lastName`}
             name={`${personKey}.lastName`}
-            label="Last Name"
+            label={`Last Name${isContactPerson1 ? " *" : ""}`}
             value={formik.values[personKey].lastName}
             onChange={formik.handleChange}
             error={
@@ -139,7 +141,7 @@ const Contacts = ({
             fullWidth
             id={`${personKey}.contactNumber1`}
             name={`${personKey}.contactNumber1`}
-            label="Contact Number 1"
+            label={`Contact Number 1${isContactPerson1 ? " *" : ""}`}
             value={formik.values[personKey].contactNumber1}
             onChange={formik.handleChange}
             error={
@@ -167,7 +169,7 @@ const Contacts = ({
             fullWidth
             id={`${personKey}.emailId`}
             name={`${personKey}.emailId`}
-            label="Email Id"
+            label={`Email Id${isContactPerson1 ? " *" : ""}`}
             value={formik.values[personKey].emailId}
             onChange={formik.handleChange}
             error={
@@ -185,7 +187,7 @@ const Contacts = ({
             fullWidth
             id={`${personKey}.designation`}
             name={`${personKey}.designation`}
-            label="Designation"
+            label={`Designation${isContactPerson1 ? " *" : ""}`}
             value={formik.values[personKey].designation}
             onChange={formik.handleChange}
             error={
@@ -201,6 +203,7 @@ const Contacts = ({
       </Grid>
     </>
   );
+};
 
   return (
     <>

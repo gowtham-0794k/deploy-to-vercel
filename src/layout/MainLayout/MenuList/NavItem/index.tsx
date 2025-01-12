@@ -90,9 +90,9 @@ const NavItem = ({
     />
   );
 
-  const getFirstTitleChar: any = item.id
-    ? (item?.id[0] + item?.id[1]).toUpperCase()
-    : "A";
+  // const getFirstTitleChar: any = item.id
+  //   ? (item?.id[0] + item?.id[1]).toUpperCase()
+  //   : "A";
 
   let itemTarget: LinkTarget = "_self";
   if (item.target) {
@@ -199,7 +199,11 @@ const NavItem = ({
                   }),
               }}
             >
-              {getFirstTitleChar}
+              <img
+                src={item.icon }
+                alt={item.id}
+              />
+              {/* {getFirstTitleChar} */}
             </ListItemIcon>
           </ButtonBase>
 

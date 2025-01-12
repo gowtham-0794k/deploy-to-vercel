@@ -30,13 +30,13 @@ export const MMTreeView = ({ data }: any) => {
       {nodes.levelTwo && nodes.levelTwo.length > 0
         ? nodes.levelTwo.map((levelTwoNode: any) => renderTree(levelTwoNode))
         : null}
-        {nodes.levelThree && nodes.levelThree.length > 0
-        ? nodes.levelThree.map((levelThreeNode: any) => renderTree(levelThreeNode))
+      {nodes.levelThree && nodes.levelThree.length > 0
+        ? nodes.levelThree.map((levelThreeNode: any) =>
+            renderTree(levelThreeNode)
+          )
         : null}
     </StyledTreeItem>
   );
-
-  console.log({ data });
 
   return (
     <TreeView

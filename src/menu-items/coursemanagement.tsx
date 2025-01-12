@@ -1,22 +1,25 @@
 import { FormattedMessage } from "react-intl";
 import { NavItemType } from "types";
-import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+
 
 const Createcourse: NavItemType = {
   id: "Course-Management",
+  featureName: "Course Management",
   title: <FormattedMessage id="Course Management" />,
-  icon: SentimentSatisfiedAltIcon,
+  icon: "/assets/logos/ASK Type 2.svg",
   type: "group",
   children: [
     {
       id: "Create-Department",
+      subFeatureName: "Create Department",
       title: <FormattedMessage id="Create Department" />,
       type: "item",
-      icon: SentimentSatisfiedAltIcon,
+      icon: "/assets/logos/ASK Type 2.svg",
       url: "/coursemanagement/create-department",
     },
     {
       id: "create-decipline",
+      subFeatureName: "Create Discipline",
       title: (
         <FormattedMessage
           id="Create 
@@ -24,21 +27,23 @@ const Createcourse: NavItemType = {
         />
       ),
       type: "item",
-      icon: SentimentSatisfiedAltIcon,
+      icon: "/assets/logos/ASK Type 1.svg",
       url: "/coursemanagement/create-discipline", // Note the lowercase 'create course'
     },
     {
-      id: "create-devision",
+      id: "create-division",
+      subFeatureName: "Create Division",
       title: <FormattedMessage id="Create Division" />,
       type: "item",
-      icon: SentimentSatisfiedAltIcon,
-      url: "/coursemanagement/create-devision",
+      icon: "/assets/logos/ASK Type 1.svg",
+      url: "/coursemanagement/create-division",
     },
     {
       id: "create-courses",
+      subFeatureName: "Create Course1",
       title: <FormattedMessage id="Create Courses" />,
       type: "item",
-      icon: SentimentSatisfiedAltIcon,
+      icon: "/assets/logos/ASK Type 1.svg",
       url: "/coursemanagement/create-course",
     },
   ],

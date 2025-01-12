@@ -43,6 +43,7 @@ export interface GenericCardProps {
   iconPrimary?: OverrideIcon;
   color?: string;
   size?: string;
+  svg?: ReactElement;
 }
 
 export type OverrideIcon =
@@ -100,6 +101,8 @@ export type NavItemType = {
   children?: NavItemType[];
   elements?: NavItemType[];
   search?: string;
+  featureName?: string;
+  subFeatureName?: string;
 };
 
 export type AuthSliderProps = {
@@ -116,7 +119,7 @@ export interface ColorPaletteProps {
 export interface DefaultRootStateProps {
   snackbar: SnackbarProps;
   user: UserStateProps;
-  chat:ChatStateProps;
+  chat: ChatStateProps;
 }
 
 export interface ColorProps {

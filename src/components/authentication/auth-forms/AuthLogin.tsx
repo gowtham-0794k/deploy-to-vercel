@@ -21,22 +21,18 @@ import {
 } from "utils/genericExports/theme-imports";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { signIn, useSession } from "next-auth/react";
-import { SAMPLE_PAGE, USER_ROLES } from "shared/constants/routerUrls";
+import { signIn } from "next-auth/react";
+import { SAMPLE_PAGE } from "shared/constants/routerUrls";
 import {
   INVALID_EMAIL_AND_PASSWORD,
   SIGN_IN_ERROR,
 } from "shared/errorMessages";
-import useConfig from "hooks/useConfig";
-import { postAxios } from "shared";
 
 const JWTLogin = ({ ...others }) => {
-  const { rolesAndPermissionsChange } = useConfig(),
-    { data: session } = useSession(),
-    theme = useTheme(),
+  const theme = useTheme(),
     router = useRouter(),
     searchParams = useSearchParams(),
-    callbackUrl = searchParams.get("callbackUrl") || SAMPLE_PAGE,
+    callbackUrl = searchParams.get("callbackUrl") ?? SAMPLE_PAGE,
     [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -55,28 +51,17 @@ const JWTLogin = ({ ...others }) => {
         email: values.email,
         password: values.password,
       });
-      if (result?.error) {
+      if (result?.status === 200) {
+        setStatus({ success: true });
+        setSubmitting(false);
+        router.push(callbackUrl);
+      } else {
         setStatus({ success: false });
         setErrors({ submit: INVALID_EMAIL_AND_PASSWORD });
         setSubmitting(false);
-      } else {
-        setStatus({ success: true });
-        router.push(callbackUrl);
-        const userRolesPayload = {
-          id: session?.user?.id,
-        };
-        const userRolesResponse = await postAxios({
-          url: USER_ROLES,
-          values: userRolesPayload,
-        });
-        if (!userRolesResponse) {
-          throw new Error("Could't fetch roles and permissions !");
-        }
-        const rolesResponse = userRolesResponse?.data?.role;
-        rolesAndPermissionsChange(rolesResponse);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      console.error("Login error:", err);
       setStatus({ success: false });
       setErrors({ submit: SIGN_IN_ERROR });
       setSubmitting(false);
@@ -116,7 +101,17 @@ const JWTLogin = ({ ...others }) => {
           <FormControl
             fullWidth
             error={Boolean(touched.email && errors.email)}
-            sx={{ ...theme.typography.customInput }}
+            sx={{
+              ...theme.typography.customInput,
+              "& .MuiInputLabel-root": {
+                transform: values.email
+                  ? "translate(14px, -9px) scale(0.75)"
+                  : "translate(14px, 16px) scale(1)",
+                "&.Mui-focused, &.MuiFormLabel-filled": {
+                  transform: "translate(14px, -9px) scale(0.75)",
+                },
+              },
+            }}
           >
             <InputLabel htmlFor="outlined-adornment-email-login">
               Email Address / Mobile Number
@@ -143,7 +138,17 @@ const JWTLogin = ({ ...others }) => {
           <FormControl
             fullWidth
             error={Boolean(touched.password && errors.password)}
-            sx={{ ...theme.typography.customInput }}
+            sx={{
+              ...theme.typography.customInput,
+              "& .MuiInputLabel-root": {
+                transform: values.password
+                  ? "translate(14px, -9px) scale(0.75)"
+                  : "translate(14px, 16px) scale(1)",
+                "&.Mui-focused, &.MuiFormLabel-filled": {
+                  transform: "translate(14px, -9px) scale(0.75)",
+                },
+              },
+            }}
           >
             <InputLabel htmlFor="outlined-adornment-password-login">
               Password

@@ -10,6 +10,7 @@ import * as yup from "yup";
 const validationSchema = yup.object({
   adminUrl: yup.string().required("adminUrl is required"),
   domainUrl: yup.string().required("domainUrl is required"),
+  userUrl: yup.string().required("appUrl is required"),
 });
 
 
@@ -67,7 +68,7 @@ export default function UrlForm({
               onChange={formik.handleChange}
               error={formik.touched.domainUrl && Boolean(formik.errors.domainUrl)}
               helperText={formik.touched.domainUrl && formik.errors.domainUrl}
-              label="Domain URL"
+              label="Domain URL *"
               fullWidth
               autoComplete="cc-name"
             />
@@ -80,7 +81,7 @@ export default function UrlForm({
               onChange={formik.handleChange}
               error={formik.touched.adminUrl && Boolean(formik.errors.adminUrl)}
               helperText={formik.touched.adminUrl && formik.errors.adminUrl}
-              label="Admin URL"
+              label="Admin URL *"
               fullWidth
               autoComplete="cc-name"
             />
@@ -89,7 +90,7 @@ export default function UrlForm({
             <TextField
               id="userUrl"
               name="userUrl"
-              label="User URL"
+              label="App URL *"
               value={formik.values.userUrl}
               onChange={formik.handleChange}
               error={formik.touched.userUrl && Boolean(formik.errors.userUrl)}

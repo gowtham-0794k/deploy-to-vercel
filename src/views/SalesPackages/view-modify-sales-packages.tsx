@@ -55,7 +55,7 @@ const ViewModify = () => {
   const [showFirstCard, setShowFirstCard] = useState(false);
   const [groups, setGroups] = useState<Group[]>([]);
   const [bundles, setBundles] = useState<Bundles[]>([]);
-  const [endDate, setEndDate] = useState<dayjs.Dayjs | null>(null);
+  const [_, setEndDate] = useState<dayjs.Dayjs | null>(null);
   const [salesPackages, setSalesPackages] = useState<SalesPackage[]>([]);
   const [isGroupSelected, setIsGroupSelected] = useState(false);
   const [selectedSalesPack, setSelectedSalesPack] =
@@ -142,7 +142,6 @@ const ViewModify = () => {
   ) => {
     if (!selectedSalesPack?._id) {
       console.error("No sales package selected");
-      console.log(endDate);
       return;
     }
 

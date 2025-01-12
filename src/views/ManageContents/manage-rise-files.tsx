@@ -21,37 +21,47 @@ function ManageRiseFiles() {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("paperId", paper._id);
-    if(part){
+    if (part) {
       formData.append("partId", part._id);
     }
-    if(chapter){
+    if (chapter) {
       formData.append("chapterId", chapter._id);
     }
-    if(unit){
+    if (unit) {
       formData.append("unitId", unit._id);
     }
     try {
-      console.log({ formData });
-      console.log({ file, paper, part, chapter, unit });
-      const response = await axios.post(UPLOAD_RISE_FILES, formData,{
-        headers:{
-          "Content-Type": "multipart/form-data"
-        }
+      const response = await axios.post(UPLOAD_RISE_FILES, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
-      console.log({response});
-      if(response.status === 200){
-        dispatch(openSnackbarFunction(response.data.message || "File uploaded successfully.", "success"));
+      if (response.status === 200) {
+        dispatch(
+          openSnackbarFunction(
+            response.data.message || "File uploaded successfully.",
+            "success"
+          )
+        );
       }
     } catch (error: any) {
-      if(error.response.status === 409 || error.response.status === 400){
-        dispatch(openSnackbarFunction(error.response.data.message || "File already exists.", "warning"));
-      }else{
-        dispatch(openSnackbarFunction(error.response.data.message || "Something went wrong.", "error"));
+      if (error.response.status === 409 || error.response.status === 400) {
+        dispatch(
+          openSnackbarFunction(
+            error.response.data.message || "File already exists.",
+            "warning"
+          )
+        );
+      } else {
+        dispatch(
+          openSnackbarFunction(
+            error.response.data.message || "Something went wrong.",
+            "error"
+          )
+        );
       }
     }
   };
-  return (
-    <QuestionManager onFileUpload={handleFileUpload} title="Rise Files" />
-  );
+  return <QuestionManager onFileUpload={handleFileUpload} title="Rise Files" />;
 }
 export default ManageRiseFiles;

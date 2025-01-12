@@ -162,9 +162,6 @@ const CreateOrg = () => {
               GSTNumber: bankDataValues.bankData.GSTNumber,
             },
           };
-          // console.log({ bankDataValues });
-          // console.log({combineData});
-          // console.log({bankData})
         try {
           const response = await axios.post(`${BASE_URL}/org`, combineData, {
             headers: {
@@ -200,6 +197,8 @@ const CreateOrg = () => {
             );
           }
           const errorMessage =
+          (error.response.data &&
+            Object.values(error.response.data)[0]) ||
             error.response?.data?.message ||
             error.message ||
             "Failed to create organisation";
@@ -216,7 +215,6 @@ const CreateOrg = () => {
   };
 
   return (
-    <>
       <Grid container spacing={gridSpacing} justifyContent="center">
         <Grid item xs={12} md={9} lg={7}>
           <MainCard>
@@ -259,7 +257,6 @@ const CreateOrg = () => {
           </MainCard>
         </Grid>
       </Grid>
-    </>
   );
 };
 

@@ -29,14 +29,14 @@ import { KeyedObject, ArrangementOrder, EnhancedTableHeadProps } from 'types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FaceRetouchingOffIcon from '@mui/icons-material/FaceRetouchingOff';
 
-type TableEnhancedCreateDataType = {  OrganisationName: string; Departments: number; Deciplines: number; devisions: number; courses: number; totalusers: number; activeusers: number; };
+type TableEnhancedCreateDataType = {  OrganisationName: string; Departments: number; Deciplines: number; divisions: number; courses: number; totalusers: number; activeusers: number; };
 // table data
-function createData(OrganisationName: string, Departments: number, Deciplines: number, devisions: number, courses: number, totalusers: number, activeusers: number) {
+function createData(OrganisationName: string, Departments: number, Deciplines: number, divisions: number, courses: number, totalusers: number, activeusers: number) {
   return {
     OrganisationName,
     Departments,
     Deciplines,
-    devisions,
+    divisions,
     courses,
     totalusers,
     activeusers
@@ -331,7 +331,7 @@ function EnhancedTable() {
                     <TableCell>{row.OrganisationName}</TableCell>
                     <TableCell align="right">{row.Departments}</TableCell>
                     <TableCell align="right">{row.Deciplines}</TableCell>
-                    <TableCell align="right">{row.devisions}</TableCell>
+                    <TableCell align="right">{row.divisions}</TableCell>
                     <TableCell sx={{ pr: 3 }} align="right">
                    {row.courses}
                     </TableCell>

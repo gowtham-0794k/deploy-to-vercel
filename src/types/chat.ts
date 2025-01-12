@@ -9,6 +9,8 @@ export type History = {
   to?: string;
   time?: string;
   text?: string;
+  files?: string[];
+  file?: string;
 };
 
 export interface ChatHistory {
@@ -18,6 +20,8 @@ export interface ChatHistory {
   text?: string;
   time?: string;
   user?:string;
+  files?: string[];
+  file?: string;
 }
 
 export interface ChatStateProps {
@@ -34,6 +38,10 @@ export interface ChatStateProps {
 //   time: string
 //   user: UserProfile
 // }
+export interface Message {
+  files: string;
+  
+}
 
 
 

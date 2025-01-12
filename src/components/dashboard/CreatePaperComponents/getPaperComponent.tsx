@@ -4,9 +4,9 @@ import { MenuItem, TextField } from "utils/genericExports/theme-imports";
 import { useEffect, useState } from "react";
 import { getAxios } from "shared";
 import { useDispatch } from "store";
-import InputLabel from "ui-component/extended/Form/InputLabel";
 import { openSnackbarFunction } from "utils/utils";
 import { GET_PAPERS } from "shared/constants/routerUrls";
+
 
 export interface Paper {
   _id: string;
@@ -47,9 +47,6 @@ const GetPaperComponent: React.FC<GetPaperComponentProps> = ({
 
   return (
     <div>
-      <InputLabel>
-        Select Paper <span style={{ color: "red", marginLeft: "4px" }}>*</span>
-      </InputLabel>
       <TextField
         select
         fullWidth
@@ -77,6 +74,7 @@ const GetPaperComponent: React.FC<GetPaperComponentProps> = ({
           </MenuItem>
         ))}
       </TextField>
+     
     </div>
   );
 };

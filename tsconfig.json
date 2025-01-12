@@ -22,9 +22,13 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "typeRoots": ["../node_modules/@types", "../@types", "./types"],
+   
     "paths": {
       "ui-component": ["components/ui-component"],
-      "ui-component/*": ["components/ui-component/*"]
+      "ui-component/*": ["components/ui-component/*"],
+      "@/*": ["src/*"],
+      "@components/*": ["components/*"]
+      
     },
     "plugins": [
       {

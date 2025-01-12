@@ -1,30 +1,27 @@
 import { FormattedMessage } from "react-intl";
-import { IconKey, IconBug } from "@tabler/icons-react";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { NavItemType } from "types";
-const icons = {
-  IconKey,
-  IconBug,
-};
 
 const Organization: NavItemType = {
   id: "Admin-pages",
+  featureName: "Admin pages",
   title: <FormattedMessage id="Admin Pages" />,
-  icon: icons.IconKey,
+  icon: "/assets/logos/ASK Type 1.svg",
   type: "group",
   children: [
     {
       id: "pricing-page",
+      subFeatureName: "",
       title: <FormattedMessage id="Pricing Page" />,
       type: "item",
-      icon: MenuBookIcon,
+      icon: "/assets/logos/ASK Type 1.svg",
       url: "/adminpages/pricing-page",
     },
     {
       id: "checkout-page",
+      subFeatureName: "",
       title: <FormattedMessage id="Checkout Page" />,
       type: "item",
-      icon: MenuBookIcon,
+      icon: "/assets/logos/ASK Type 1.svg",
       url: "/adminpages/checkout-page",
     },
   ],

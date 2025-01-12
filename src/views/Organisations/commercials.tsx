@@ -15,7 +15,11 @@ import {
   MenuItem,
   FormHelperText,
 } from "utils/genericExports/theme-imports";
-import { BASE_URL, GET_ORGS } from "shared/constants/routerUrls";
+import {
+  BASE_URL,
+  GET_COURSE_BY_ORGID,
+  GET_ORGS,
+} from "shared/constants/routerUrls";
 import { openSnackbarFunction } from "utils/utils";
 import { useDispatch } from "store";
 import { getAxios } from "shared";
@@ -24,13 +28,7 @@ interface FormattedCourse {
   id: string;
   label: string;
 }
-const dummyCourses = [
-  { _id: "1", course_name: "Introduction to Programming" },
-  { _id: "2", course_name: "Web Development Basics" },
-  { _id: "3", course_name: "Data Structures and Algorithms" },
-  { _id: "4", course_name: "Machine Learning Fundamentals" },
-  { _id: "5", course_name: "Mobile App Development" },
-];
+
 function Commercials() {
   const getPercentage = (
       value: any,
@@ -44,19 +42,57 @@ function Commercials() {
     },
     [organizations, setOrganizations] = useState<any[]>([]),
     [courses, setCourses] = useState<FormattedCourse[]>([]),
+    [_, setSelectedOrg] = useState<string>(""),
     dispatch = useDispatch(),
     getOrganizations = async () => {
       const organizationResponse = await getAxios({ url: GET_ORGS });
       setOrganizations(organizationResponse?.data?.entities);
     },
-    fetchCourses = async () => {
-      const formattedCourses: FormattedCourse[] = dummyCourses.map(
-        (course) => ({
-          id: course._id,
-          label: course.course_name,
-        })
-      );
-      setCourses(formattedCourses);
+    fetchCourses = async (orgId: string) => {
+      if (!orgId) {
+        setCourses([]);
+        return;
+      }
+
+      try {
+        const response = await getAxios({
+          url: `${GET_COURSE_BY_ORGID}/${orgId}`,
+        });
+
+        if (response?.data) {
+          const formattedCourses = response.data.map((course: any) => ({
+            id: course._id,
+            label: course.courseName,
+          }));
+          setCourses(formattedCourses);
+        } else {
+          setCourses([]);
+        }
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+        dispatch(openSnackbarFunction("Failed to fetch courses", "error"));
+        setCourses([]);
+      }
+    },
+    handleOrgChange = (
+      event: React.ChangeEvent<HTMLInputElement>,
+      setFieldValue: (field: string, value: any) => void,
+      resetForm: () => void
+    ) => {
+      const newOrgId = event.target.value;
+      setSelectedOrg(newOrgId);
+
+      // Clear existing courses
+      setCourses([]);
+
+      // Fetch new courses for the selected organization
+      if (newOrgId) {
+        fetchCourses(newOrgId);
+      }
+
+      // Reset form values when organization changes
+      resetForm();
+      setFieldValue("organizationId", newOrgId);
     },
     handleSubmit = async (
       values: any,
@@ -127,13 +163,13 @@ function Commercials() {
 
   useEffect(() => {
     getOrganizations();
-    fetchCourses();
   }, []);
 
   return (
     <Formik
       initialValues={{
         organizationName: "",
+        organizationId: "",
         categoryACourses: [],
         categoryAMeraMasterOrgShares: "",
         categoryAMeraMasterTenantShares: "",
@@ -172,6 +208,7 @@ function Commercials() {
         errors,
         handleBlur,
         handleChange,
+        resetForm,
       }) => (
         <form onSubmit={handleSubmit}>
           <MainCard
@@ -196,19 +233,11 @@ function Commercials() {
                   margin="normal"
                   name="organizationName"
                   id="organizationName"
-                  value={values.organizationName}
+                  value={values.organizationId}
                   onBlur={handleBlur}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    const selectedOrg = organizations.find(
-                      (org) => org.organizationName === event.target.value
-                    );
-                    if (selectedOrg) {
-                      setFieldValue(
-                        "organizationName",
-                        selectedOrg.organizationName
-                      );
-                      setFieldValue("organizationId", selectedOrg._id);
-                    }
+                    handleOrgChange(event, setFieldValue, resetForm);
+                    handleChange(event);
                   }}
                   error={
                     touched.organizationName && Boolean(errors.organizationName)
@@ -216,7 +245,7 @@ function Commercials() {
                 >
                   {organizations.length > 0 ? (
                     organizations.map((org) => (
-                      <MenuItem key={org._id} value={org.organizationName}>
+                      <MenuItem key={org._id} value={org._id}>
                         {org.organizationName}
                       </MenuItem>
                     ))

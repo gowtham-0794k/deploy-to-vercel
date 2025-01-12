@@ -15,26 +15,19 @@ import AuthCardWrapper from "components/authentication/AuthCardWrapper";
 import Logo from "ui-component/Logo";
 import AuthLogin from "components/authentication/auth-forms/AuthLogin";
 import BackgroundPattern1 from "ui-component/cards/BackgroundPattern1";
-import { useTenant } from "../../components/tenantLayout";
 import { SliderForAuth } from "components/meraMaster";
-
-const AuthBlueCard = "/assets/images/auth/auth-blue-card.svg";
-const AuthPurpleCard = "/assets/images/auth/auth-purple-card.svg";
+import { useTenant } from "components/tenantLayout";
 
 const Login = () => {
-  const { loading, error } = useTenant();
-  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
-
-  // Handle loading state
-  if (loading) {
-    return <div>Loading...</div>; // Or a more sophisticated loading component
+  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md")),
+    { tenant, error } = useTenant(),
+    loginImage = tenant?.Organisation?.branding?.loginImage;
+  const AuthBlueCard = loginImage || "/assets/images/auth/auth-blue-card.svg";
+  const AuthPurpleCard =
+    loginImage || "/assets/images/auth/auth-purple-card.svg";
+  if(!tenant) {
+    return <div><Typography variant="h4">{error?.message}</Typography></div>
   }
-
-  // Handle error state
-  if (error) {
-    return <div>Error loading tenant information</div>; // Or error handling component
-  }
-
   return (
     <AuthWrapper1>
       <Grid

@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { auth } from "./auth";
 
 export default auth((req) => {
-  console.log("auth middle ware !");
   const { nextUrl } = req;
   const isAuthorized = req.auth?.user;
 

@@ -10,7 +10,7 @@ import InputLabel from "ui-component/extended/Form/InputLabel";
 import { openSnackbarFunction } from "utils/utils";
 import { postAxios } from "shared";
 import { Paper } from "./getPaperComponent";
-import { BASE_URL } from 'shared/constants/routerUrls';
+import { GET_PARTS } from 'shared/constants/routerUrls';
 
 export interface Part {
     _id: string;
@@ -40,7 +40,7 @@ const GetPartComponent: React.FC<GetPartComponentProps> = ({
 
         try {
             const partResponse = await postAxios({
-                url: `${BASE_URL}/partsById`,
+                url: `${GET_PARTS}`,
                 values: { paperId: selectedPaper._id }
             });
             setParts(partResponse?.data || []);

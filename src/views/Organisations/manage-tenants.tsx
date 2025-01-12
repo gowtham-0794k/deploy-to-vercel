@@ -27,7 +27,7 @@ type TableEnhancedCreateDataType = {
   OrganisationName: string;
   Departments: number;
   Deciplines: number;
-  devisions: number;
+  divisions: number;
   courses: number;
   totalusers: number;
   activeusers: number;
@@ -37,7 +37,7 @@ function createData(
   OrganisationName: string,
   Departments: number,
   Deciplines: number,
-  devisions: number,
+  divisions: number,
   courses: number,
   totalusers: number,
   activeusers: number
@@ -46,7 +46,7 @@ function createData(
     OrganisationName,
     Departments,
     Deciplines,
-    devisions,
+    divisions,
     courses,
     totalusers,
     activeusers,
@@ -112,10 +112,10 @@ const headCells = [
     label: "Deciplines",
   },
   {
-    id: "devisions",
+    id: "divisions",
     numeric: true,
     disablePadding: false,
-    label: "Devisions",
+    label: "Divisions",
   },
   {
     id: "courses",
@@ -340,7 +340,7 @@ function EnhancedTable() {
                     <TableCell>{row.OrganisationName}</TableCell>
                     <TableCell align="right">{row.Departments}</TableCell>
                     <TableCell align="right">{row.Deciplines}</TableCell>
-                    <TableCell align="right">{row.devisions}</TableCell>
+                    <TableCell align="right">{row.divisions}</TableCell>
                     <TableCell sx={{ pr: 3 }} align="right">
                       {row.courses}
                     </TableCell>

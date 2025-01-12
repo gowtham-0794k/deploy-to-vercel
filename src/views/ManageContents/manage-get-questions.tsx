@@ -16,8 +16,6 @@ function ManageGetQuestions() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      console.log({ formData });
-      console.log({ file, paper, part, chapter, unit });
     } catch (error) {
       console.error("Error uploading file:", error);
       throw error;

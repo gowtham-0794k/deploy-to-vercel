@@ -62,7 +62,7 @@ const ChatMainPage = () => {
   const downLG = useMediaQuery(theme.breakpoints.down("lg"));
   const [loading, setLoading] = useState<boolean>(true);
   const scrollRef = useRef();
-  const [history, setHistory] = useState<HistoryProps[]>([]);
+  // const [_, setHistory] = useState<HistoryProps[]>([]);
   const defaultUser: UserProfile = {
     id: undefined,
     name: "",
@@ -158,16 +158,16 @@ const ChatMainPage = () => {
   };
 
   if (loading) return <Loader />;
-  const handleNewChat = () => {
-    if (data.length > 0) {
-      setHistory((prevHistory) => [...prevHistory, ...data]);
-      dispatch({
-        type: "STORE_CHAT_HISTORY",
-        payload: { timestamp: new Date(), messages: [...data] },
-      });
-    }
-    setData([]);
-  };
+  // const handleNewChat = () => {
+  //   if (data.length > 0) {
+  //     setHistory((prevHistory) => [...prevHistory, ...data]);
+  //     dispatch({
+  //       type: "STORE_CHAT_HISTORY",
+  //       payload: { timestamp: new Date(), messages: [...data] },
+  //     });
+  //   }
+  //   setData([]);
+  // };
   
 // const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
 //   const file = event.target.files?.[0];
@@ -197,7 +197,7 @@ const ChatMainPage = () => {
         openChatDrawer={openChatDrawer}
         handleDrawerOpen={handleDrawerOpen}
         setUser={setUser}
-        history={history}
+      
       />
       <Main theme={theme} open={openChatDrawer}>
         <Grid container spacing={gridSpacing}>
@@ -277,7 +277,7 @@ const ChatMainPage = () => {
                           horizontal: "right",
                         }}
                       >
-                        <MenuItem onClick={handleNewChat}>New Chat</MenuItem>
+                        <MenuItem >New Chat</MenuItem>
                       </Menu>
                     </Grid>
                   </Grid>

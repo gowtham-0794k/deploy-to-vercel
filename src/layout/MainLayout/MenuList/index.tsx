@@ -21,9 +21,67 @@ import { useGetMenuMaster } from "shared/services/menu";
 import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
 
+function normalizeName(name: string): string {
+  return name?.toLowerCase().replace(/ /g, "_");
+}
+
+function normalizeNameMenu(name: string): string {
+  return name?.toLowerCase().replace(/ /g, "_").replace(/-/g, "_");
+}
+
+function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
+  const featureSet = new Set<string>();
+  const subFeatureSet = new Set<string>();
+  console.log({ roles });
+  console.log("filter menu items !");
+  // Separate feature and sub-feature normalization
+  roles?.forEach((feature) => {
+    if (feature.enabled) {
+      featureSet.add(normalizeName(feature.featureName));
+      feature.subFeatures.forEach((subFeature: any) => {
+        if (subFeature.enabled) {
+          subFeatureSet.add(normalizeName(subFeature.subFeatureName));
+        }
+      });
+    }
+  });
+  console.log({ featureSet });
+  function filterMenu(item: any) {
+    const idToMatch = normalizeNameMenu(item?.featureName);
+    if (featureSet.has(idToMatch)) {
+      let filteredChildren: any = [];
+      if (item.children) {
+        filteredChildren = item.children
+          .map((child: any) => {
+            const childIdToMatch = normalizeNameMenu(child?.subFeatureName);
+            return subFeatureSet.has(childIdToMatch) ? child : null;
+          })
+          .filter(Boolean);
+
+        if (filteredChildren.length > 0) {
+          return { ...item, children: filteredChildren };
+        }
+        return null;
+      }
+      return {
+        ...item,
+        children: filteredChildren,
+      };
+    }
+  }
+
+  const matchedItems: any = [];
+  menuItems.forEach((item) => {
+    const filteredItem = filterMenu(item);
+    if (filteredItem) matchedItems.push(filteredItem);
+  });
+
+  return matchedItems;
+}
+
 const MenuList = () => {
   const theme = useTheme(),
-    // { rolesAndPermissions } = useConfig(),
+    { rolesAndPermissions } = useConfig(),
     downMD = useMediaQuery(theme.breakpoints.down("md")),
     { menuOrientation } = useConfig(),
     { menuMaster } = useGetMenuMaster(),
@@ -32,56 +90,36 @@ const MenuList = () => {
     [selectedID, setSelectedID] = useState<string | undefined>(""),
     lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null;
 
-  // const permissionsForMenuItems = rolesAndPermissions?.permissions?.features;
+  const menuItems: any = menuItem;
 
-  // TODO:once add proper permissions in db un comment
-  const roleAndPermissionsMenuItems = menuItem.items?.filter((item: any) => {
-    // const getParentMenuItem = permissionsForMenuItems?.map((fItem: any) => {
-    //   return {
-    //     parent: fItem?.featureName?.toLowerCase()?.replace(/ /g, "_"),
-    //     child: fItem?.subFeatures?.map((childItem: any) =>
-    //       childItem?.subFeatureName?.toLowerCase()?.replace(/ /g, "_")
-    //     ),
-    //   };
-    // });
-    // const findGroup = getParentMenuItem?.find(
-    //   (parentItem: any) => parentItem?.parent === item?.uniqueId
-    // );
-    // const findChildren = item?.children?.filter((childItem: any) => {
-    //   const findChild = findGroup?.child?.find(
-    //     (item: any) => item === childItem?.uniqueId
-    //   );
-    //   if (findChild) return findChild;
-    // });
-    // if (findGroup && findChildren?.length !== 0) {
-    //   item.children = findChildren;
-    //   return item;
-    // }
-    return item;
-  });
+  console.log({ rolesAndPermissions });
+  const result = filterMenuItemsByRoles(
+    rolesAndPermissions?.permissions?.features,
+    menuItems?.items
+  );
 
-  let lastItemIndex = roleAndPermissionsMenuItems.length - 1,
+  console.log({ result });
+
+  let lastItemIndex = result.length - 1,
     remItems: NavItemType[] = [],
     lastItemId: string;
 
-  if (lastItem && lastItem < roleAndPermissionsMenuItems.length) {
-    lastItemId = roleAndPermissionsMenuItems[lastItem - 1].id!;
+  if (lastItem && lastItem < result.length) {
+    lastItemId = result[lastItem - 1].id!;
     lastItemIndex = lastItem - 1;
-    remItems = roleAndPermissionsMenuItems
-      .slice(lastItem - 1, roleAndPermissionsMenuItems.length)
-      .map((item) => ({
-        title: item.title,
-        elements: item.children,
-        icon: item.icon,
-        ...(item.url && {
-          url: item.url,
-        }),
-      }));
+    remItems = result.slice(lastItem - 1, result.length).map((item: any) => ({
+      title: item.title,
+      elements: item.children,
+      icon: item.icon,
+      ...(item.url && {
+        url: item.url,
+      }),
+    }));
   }
 
-  const navItems = roleAndPermissionsMenuItems
+  const navItems = result
     .slice(0, lastItemIndex + 1)
-    .map((item, index) => {
+    .map((item: any, index: number) => {
       switch (item.type) {
         case "group":
           if (item.url && item.id !== lastItemId) {

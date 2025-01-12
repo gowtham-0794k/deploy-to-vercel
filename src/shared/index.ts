@@ -1,4 +1,4 @@
 // import services
-import { getAxios, postAxios } from "./services/generic";
+import { getAxios, postAxios, putAxios, deleteAxios } from "./services/generic";
 
-export { getAxios, postAxios };
+export { getAxios, postAxios, putAxios, deleteAxios };

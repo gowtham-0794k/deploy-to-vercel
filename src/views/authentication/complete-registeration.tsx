@@ -16,13 +16,18 @@ import {
   useMediaQuery,
 } from "utils/genericExports/theme-imports";
 import { SliderForAuth } from "components/meraMaster";
-
-const AuthBlueCard = "/assets/images/auth/auth-signup-blue-card.svg";
-const AuthWhiteCard = "/assets/images/auth/auth-signup-white-card.svg";
-// ===============================|| AUTH1 - REGISTER ||=============================== //
+import { useTenant } from "components/tenantLayout";
 const CompleteRegister = () => {
-  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
-
+  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md")),
+  { tenant, error } = useTenant(),
+  brandnameImage = tenant?.Organisation?.branding?.brandnameImage;
+const AuthBlueCard =
+  brandnameImage || "/assets/images/auth/auth-blue-card.svg";
+const AuthWhiteCard =
+  brandnameImage || "/assets/images/auth/auth-signup-white-card.svg";
+  if(!tenant) {
+    return <div><Typography variant="h4">{error?.message}</Typography></div>
+  }
   return (
     <AuthWrapper1>
       <Grid

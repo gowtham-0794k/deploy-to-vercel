@@ -1,4 +1,4 @@
-import { GetAxiosTypes, PostAxiosTypes } from "shared/types/generic";
+import { GetAxiosTypes, PostAxiosTypes, DeleteAxiosTypes } from "shared/types/generic";
 import axios, { AxiosRequestConfig } from "axios";
 
 const axiosServices = axios.create({
@@ -36,3 +36,8 @@ export const postAxios = async ({ url, values }: PostAxiosTypes) => {
 export const putAxios = async ({ url, values }: PostAxiosTypes) => {
   return axios.put(url, values, options);
 };
+
+export const deleteAxios = async ({ url }: DeleteAxiosTypes) => {
+  return axios.delete(url);
+};
+

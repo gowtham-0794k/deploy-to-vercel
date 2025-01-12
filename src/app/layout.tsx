@@ -37,7 +37,7 @@ async function fetchTenantMetadata() {
   };
 
   // Get current hostname (works in server-side context)
-  const hostname = process.env.NEXT_PUBLIC_VERCEL_URL ?? 'demo.localhost';
+  const hostname = process.env.NEXT_PUBLIC_VERCEL_URL ?? 'localhost';
   
   return tenantMap[hostname as keyof typeof tenantMap] || null;
 }

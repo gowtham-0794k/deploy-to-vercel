@@ -10,6 +10,7 @@ const Createcourse: NavItemType = {
   children: [
     {
       id: "Create-Department",
+      subFeatureName: "Get Questions ",
       title: <FormattedMessage id="Create Department" />,
       type: "item",
       icon: SentimentSatisfiedAltIcon,
@@ -17,6 +18,7 @@ const Createcourse: NavItemType = {
     },
     {
       id: "create-decipline",
+      subFeatureName: "Get Questions ",
       title: (
         <FormattedMessage
           id="Create 
@@ -28,14 +30,16 @@ const Createcourse: NavItemType = {
       url: "/createcourse/create-discipline", // Note the lowercase 'create course'
     },
     {
-      id: "create-devision",
+      id: "create-division",
+      subFeatureName: "Get Questions ",
       title: <FormattedMessage id="Create Division" />,
       type: "item",
       icon: SentimentSatisfiedAltIcon,
-      url: "/createcourse/create-devision",
+      url: "/createcourse/create-division",
     },
     {
       id: "create-courses",
+      subFeatureName: "Get Questions ",
       title: <FormattedMessage id="Create Courses" />,
       type: "item",
       icon: SentimentSatisfiedAltIcon,

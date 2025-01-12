@@ -8,7 +8,6 @@ import {
   useTheme,
   Box,
   Button,
-  FormHelperText,
   Grid,
   Typography,
   MenuItem,
@@ -43,8 +42,9 @@ const JWTRegister = ({ ...others }) => {
       };
     try {
       const response = await dispatch(completeRegistration(formData));
-
-      if (response.payload) {
+      if (response.payload.error) {
+        throw new Error(REGISTRATION_FAILED);
+      } else {
         setStatus({ success: true });
         setSubmitting(false);
         dispatch(openSnackbarFunction(REGISTRATION_COMPLETED, "success"));
@@ -52,17 +52,16 @@ const JWTRegister = ({ ...others }) => {
         setTimeout(() => {
           router.push(LOGIN);
         }, 1500);
-      } else {
-        throw new Error(REGISTRATION_FAILED);
       }
     } catch (err: any) {
-      console.error(err);
       setStatus({
         success: false,
         message: err.message || REGISTRATION_FAILED,
       });
       setSubmitting(false);
-      dispatch(openSnackbarFunction(err.message || REGISTRATION_FAILED, "error"));
+      dispatch(
+        openSnackbarFunction(err.message || REGISTRATION_FAILED, "error")
+      );
     }
   };
 
@@ -273,17 +272,6 @@ const JWTRegister = ({ ...others }) => {
                 }}
               />
             )}
-
-            {errors && (
-              <Box sx={{ mt: 3 }}>
-                {Object.keys(errors).map((key, index) => (
-                  <FormHelperText error key={index}>
-                    {errors[key as keyof typeof errors]}
-                  </FormHelperText>
-                ))}
-              </Box>
-            )}
-
             <Box sx={{ mt: 2 }}>
               <AnimateButton>
                 <Button

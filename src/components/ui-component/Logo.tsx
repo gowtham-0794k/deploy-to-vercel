@@ -1,9 +1,22 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { ThemeMode } from "types/config";
+import { useTenant } from "components/tenantLayout";
 
-const Logo = () => {
+const Logo: React.FC = () => {
   const theme = useTheme();
+  const { tenant } = useTenant();
+  const tenantLogo = tenant?.Organisation?.branding?.logo;
+
+  const logoStyle = {
+    width: "120px",
+    height: "auto",
+    filter: theme.palette.mode === ThemeMode.DARK ? "invert(1)" : "none",
+  };
+
+  if (tenantLogo) {
+    return <img src={tenantLogo} alt="logo" style={logoStyle} />;
+  }
 
   return (
     <svg
@@ -32,5 +45,4 @@ const Logo = () => {
   );
 };
 
-// Single Default Export
 export default Logo;

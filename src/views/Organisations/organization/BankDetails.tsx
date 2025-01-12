@@ -79,7 +79,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.accountName && Boolean(errors.accountName)}
                 helperText={touched.accountName && errors.accountName}
-                label="Account Name"
+                label="Account Name *"
                 fullWidth
                 autoComplete="cc-name"
               />
@@ -93,7 +93,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.bankName && Boolean(errors.bankName)}
                 helperText={touched.bankName && errors.bankName}
-                label="Bank Name"
+                label="Bank Name *"
                 fullWidth
                 autoComplete="cc-name"
               />
@@ -107,7 +107,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.accountNumber && Boolean(errors.accountNumber)}
                 helperText={touched.accountNumber && errors.accountNumber}
-                label="Account Number"
+                label="Account Number *"
                 fullWidth
                 autoComplete="cc-name"
               />
@@ -121,7 +121,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.ifscCode && Boolean(errors.ifscCode)}
                 helperText={touched.ifscCode && errors.ifscCode}
-                label="IFSC Code"
+                label="IFSC Code *"
                 fullWidth
                 autoComplete="cc-number"
               />
@@ -135,7 +135,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.branchName && Boolean(errors.branchName)}
                 helperText={touched.branchName && errors.branchName}
-                label="Branch Name"
+                label="Branch Name *"
                 fullWidth
                 autoComplete="cc-name"
               />
@@ -149,7 +149,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.typeOfAccount && Boolean(errors.typeOfAccount)}
                 helperText={touched.typeOfAccount && errors.typeOfAccount}
-                label="Type of Account"
+                label="Type of Account *"
                 fullWidth
                 autoComplete="cc-name"
               />
@@ -163,7 +163,7 @@ export default function BankForm({
                 onBlur={handleBlur}
                 error={touched.GSTNumber && Boolean(errors.GSTNumber)}
                 helperText={touched.GSTNumber && errors.GSTNumber}
-                label="GST Number"
+                label="GST Number *"
                 fullWidth
                 autoComplete="cc-name"
               />

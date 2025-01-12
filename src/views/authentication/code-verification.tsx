@@ -22,10 +22,7 @@ import { useSelector } from "react-redux";
 import AuthEmailVerification from "components/authentication/auth-forms/AuthEmailVerification";
 import AuthMobileVerification from "components/authentication/auth-forms/AuthMobileVerification";
 import { SliderForAuth } from "components/meraMaster";
-
-// assets
-const AuthBlueCard = "/assets/images/auth/auth-signup-blue-card.svg";
-const AuthWhiteCard = "/assets/images/auth/auth-signup-white-card.svg";
+import { useTenant } from "components/tenantLayout";
 
 const CodeVerification = () => {
   const router = useRouter(),
@@ -36,7 +33,16 @@ const CodeVerification = () => {
     otpExpireAt = user?.otpExpiresAt,
     [isEmailVerified, setIsEmailVerified] = useState(false),
     [isMobileVerified, setIsMobileVerified] = useState(false),
-    [time, setTime] = useState(10 * 60);
+    [time, setTime] = useState(10 * 60),
+    { tenant, error } = useTenant(),
+    codeVerificationImage = tenant?.Organisation?.branding?.codeVerificationImage;
+  const AuthBlueCard =
+    codeVerificationImage || "/assets/images/auth/auth-blue-card.svg";
+  const AuthWhiteCard =
+    codeVerificationImage || "/assets/images/auth/auth-signup-white-card.svg";
+    if(!tenant) {
+      return <div><Typography variant="h4">{error?.message}</Typography></div>
+    }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -247,9 +253,9 @@ const CodeVerification = () => {
                       position: "absolute",
                       top: { xs: "50%", xl: "45%" },
                       left: { xs: "25%", xl: "35%" },
-                      width: 260,
+                      width: 400,
+                      height: 400,
                       backgroundSize: 380,
-                      height: 290,
                       backgroundImage: `url(${AuthWhiteCard})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
@@ -260,8 +266,8 @@ const CodeVerification = () => {
                       position: "absolute",
                       top: { xs: "10%", xl: "12%" },
                       left: { xs: "15%", xl: "25%" },
-                      width: 360,
-                      height: 350,
+                      width: 400,
+                      height: 270,
                       backgroundSize: 460,
                       backgroundImage: `url(${AuthBlueCard})`,
                       backgroundRepeat: "no-repeat",

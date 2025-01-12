@@ -14,32 +14,16 @@ import AuthWrapper1 from "components/authentication/AuthWrapper1";
 import AuthCardWrapper from "components/authentication/AuthCardWrapper";
 import Logo from "ui-component/Logo";
 import BackgroundPattern1 from "ui-component/cards/BackgroundPattern1";
-import AuthSlider from "ui-component/cards/AuthSlider";
-import { AuthSliderProps } from "types";
-
-const AuthErrorCard = "/assets/images/auth/auth-reset-error-card.svg";
-const AuthPurpleCard = "/assets/images/auth/auth-reset-purple-card.svg";
-
-// carousel items
-const items: AuthSliderProps[] = [
-  {
-    title: "Configurable Elements, East to Setup",
-    description: "Powerful and easy to use multipurpose theme",
-  },
-  {
-    title: "Configurable Elements, East to Setup",
-    description: "Powerful and easy to use multipurpose theme",
-  },
-  {
-    title: "Configurable Elements, East to Setup",
-    description: "Powerful and easy to use multipurpose theme",
-  },
-];
-
-// ============================|| AUTH1 - RESET PASSWORD ||============================ //
+import { useTenant } from "components/tenantLayout";
+import { SliderForAuth } from "components/meraMaster";
 
 const ResetPassword = () => {
-  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+  const downMD = useMediaQuery((theme: Theme) => theme.breakpoints.down("md")),
+  { tenant } = useTenant(),
+  resetPasswordImage = tenant?.Organisation?.branding?.resetPasswordImage;
+  const AuthErrorCard = resetPasswordImage || "/assets/images/auth/auth-reset-error-card.svg";
+  const AuthPurpleCard = resetPasswordImage || "/assets/images/auth/auth-reset-purple-card.svg";
+
 
   return (
     <AuthWrapper1>
@@ -149,7 +133,7 @@ const ResetPassword = () => {
               <Grid item xs={12}>
                 <Grid item container justifyContent="center" sx={{ pb: 8 }}>
                   <Grid item xs={10} lg={8} sx={{ "& .slick-list": { pb: 2 } }}>
-                    <AuthSlider items={items} />
+                    <SliderForAuth />
                   </Grid>
                 </Grid>
               </Grid>
