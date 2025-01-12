@@ -127,6 +127,8 @@ function ConfigProvider({ children }: ConfigProviderProps) {
   };
 
   const rolesAndPermissionsChange = (rolesAndPermissions: any) => {
+    console.log("rolesAndPermissions context !");
+    console.log({ rolesAndPermissions });
     setConfig({
       ...config,
       rolesAndPermissions,

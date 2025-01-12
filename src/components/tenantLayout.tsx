@@ -28,7 +28,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const { data: session } = useSession(),
-    { rolesAndPermissionsChange } = useConfig();
+    { rolesAndPermissionsChange, rolesAndPermissions } = useConfig();
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
@@ -48,6 +48,8 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
 
     fetchTenantData();
   }, []);
+
+  console.log({ rolesAndPermissions });
 
   useEffect(() => {
     console.log({ session });
@@ -69,6 +71,7 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({
           console.log({ userRolesResponse });
           const rolesResponse = userRolesResponse?.data?.role;
           rolesAndPermissionsChange(rolesResponse);
+          console.log({ rolesAndPermissions });
         } catch (roleError) {
           console.error("Auth Role error:", roleError);
         }
