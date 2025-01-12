@@ -27,7 +27,6 @@ function CreateParts() {
     setPaperName(paper?.displayName);
   };
 
-
   const handleGetData = async (partData: Part[]) => {
     setParts(partData);
 
@@ -95,7 +94,6 @@ function CreateParts() {
     ];
     setTreeData(setTreeDataMap);
   };
-  console.log(paperName);
 
   return (
     <Grid container spacing={3}>

@@ -22,8 +22,6 @@ import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
 import { useTenant } from "@components/tenantLayout";
 import { useSession } from "next-auth/react";
-// import { postAxios } from "shared";
-// import { USER_ROLES } from "shared/constants/routerUrls";
 
 function normalizeName(name: string): string {
   return name?.toLowerCase().replace(/ /g, "_");
@@ -36,8 +34,6 @@ function normalizeNameMenu(name: string): string {
 function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
   const featureSet = new Set<string>();
   const subFeatureSet = new Set<string>();
-  console.log({ roles });
-  console.log("filter menu items !");
   // Separate feature and sub-feature normalization
   roles?.forEach((feature) => {
     if (feature.enabled) {
@@ -49,7 +45,6 @@ function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
       });
     }
   });
-  console.log({ featureSet });
   function filterMenu(item: any) {
     const idToMatch = normalizeNameMenu(item?.featureName);
     if (featureSet.has(idToMatch)) {
@@ -85,7 +80,6 @@ function filterMenuItemsByRoles(roles: any[], menuItems: any[]) {
 
 const MenuList = () => {
   const theme = useTheme(),
-    { rolesAndPermissions } = useConfig(),
     { rolesResponse } = useTenant(),
     downMD = useMediaQuery(theme.breakpoints.down("md")),
     { menuOrientation } = useConfig(),
@@ -99,10 +93,6 @@ const MenuList = () => {
 
   const menuItems: any = menuItem;
 
-  console.log("menu rolesAndPermissions !");
-  console.log({ rolesAndPermissions });
-  console.log({ rolesResponse });
-
   useEffect(() => {
     if (rolesResponse?.permissions?.features) {
       const mapData = filterMenuItemsByRoles(
@@ -112,38 +102,6 @@ const MenuList = () => {
       setRoles(mapData);
     }
   }, [session, rolesResponse]);
-
-  console.log({ roles });
-
-  // useEffect(() => {
-  //   console.log({ session });
-  //   console.log("tenant layout !");
-  //   if (session?.user?.id) {
-  //     const fetchUserRoles = async () => {
-  //       try {
-  //         const userRolesPayload = {
-  //           id: session?.user?.id,
-  //         };
-  //         const userRolesResponse = await postAxios({
-  //           url: USER_ROLES,
-  //           values: userRolesPayload,
-  //         });
-  //         if (!userRolesResponse) {
-  //           throw new Error("Couldn't fetch roles and permissions!");
-  //         }
-  //         console.log("userRolesResponse !");
-  //         console.log({ userRolesResponse });
-  //         const rolesResponse = userRolesResponse?.data?.role;
-  //         // rolesAndPermissionsChange(rolesResponse);
-  //         setRolesResponseData(rolesResponse);
-  //         console.log({ rolesAndPermissions });
-  //       } catch (roleError) {
-  //         console.error("Auth Role error:", roleError);
-  //       }
-  //     };
-  //     fetchUserRoles();
-  //   }
-  // }, [session]);
 
   let lastItemIndex = roles.length - 1,
     remItems: NavItemType[] = [],
