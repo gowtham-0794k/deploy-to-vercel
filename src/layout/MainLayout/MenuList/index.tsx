@@ -22,8 +22,8 @@ import { NavItemType } from "types";
 import { MenuOrientation } from "types/config";
 import { useTenant } from "@components/tenantLayout";
 import { useSession } from "next-auth/react";
-import { postAxios } from "shared";
-import { USER_ROLES } from "shared/constants/routerUrls";
+// import { postAxios } from "shared";
+// import { USER_ROLES } from "shared/constants/routerUrls";
 
 function normalizeName(name: string): string {
   return name?.toLowerCase().replace(/ /g, "_");
